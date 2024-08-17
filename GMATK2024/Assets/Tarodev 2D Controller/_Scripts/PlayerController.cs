@@ -3,13 +3,6 @@ using UnityEngine;
 
 namespace TarodevController
 {
-    /// <summary>
-    /// Hey!
-    /// Tarodev here. I built this controller as there was a severe lack of quality & free 2D controllers out there.
-    /// I have a premium version on Patreon, which has every feature you'd expect from a polished controller. Link: https://www.patreon.com/tarodev
-    /// You can play and compete for best times here: https://tarodev.itch.io/extended-ultimate-2d-controller
-    /// If you hve any questions or would like to brag about your score, come to discord: https://discord.gg/tarodev
-    /// </summary>
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
@@ -19,6 +12,9 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+
+        // The gun object
+        [SerializeField] private Transform _gunObject;
 
         #region Interface
 
@@ -42,6 +38,9 @@ namespace TarodevController
         {
             _time += Time.deltaTime;
             GatherInput();
+
+            // Rotate gun in direction of the mouse
+            RotateChildToMouse();
         }
 
         private void GatherInput()
@@ -66,6 +65,25 @@ namespace TarodevController
             }
         }
 
+        // Handle gun rotation in direction of the mouse
+        private void RotateChildToMouse()
+        {
+            if (_gunObject == null) return;
+
+            // Mouse position in world space
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+
+            // Direction to the mouse
+            Vector2 direction = mousePosition - _gunObject.position;
+
+            // Angle between the gun and the mouse
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            // Rotate the gun to face the mouse
+            _gunObject.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
         private void FixedUpdate()
         {
             CheckCollisions();
@@ -73,12 +91,12 @@ namespace TarodevController
             HandleJump();
             HandleDirection();
             HandleGravity();
-            
+
             ApplyMovement();
         }
 
         #region Collisions
-        
+
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
 
@@ -86,14 +104,11 @@ namespace TarodevController
         {
             Physics2D.queriesStartInColliders = false;
 
-            // Ground and Ceiling
             bool groundHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
             bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
 
-            // Hit a Ceiling
             if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
 
-            // Landed on the Ground
             if (!_grounded && groundHit)
             {
                 _grounded = true;
@@ -102,7 +117,6 @@ namespace TarodevController
                 _endedJumpEarly = false;
                 GroundedChanged?.Invoke(true, Mathf.Abs(_frameVelocity.y));
             }
-            // Left the Ground
             else if (_grounded && !groundHit)
             {
                 _grounded = false;
@@ -205,7 +219,6 @@ namespace TarodevController
     public interface IPlayerController
     {
         public event Action<bool, float> GroundedChanged;
-
         public event Action Jumped;
         public Vector2 FrameInput { get; }
     }
