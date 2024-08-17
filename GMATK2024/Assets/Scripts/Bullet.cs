@@ -28,7 +28,13 @@ public class Bullet : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
         {
-            Debug.Log("Collided");
+            ScalableObjectBase sObj = other.GetComponent<ScalableObjectBase>();
+
+            if (sObj != null)
+            {
+                sObj.Scale(_scaleType);
+            }
+
             Destroy(gameObject);
         }
     }

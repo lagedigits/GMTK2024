@@ -19,11 +19,5 @@ public abstract class ScalableObjectBase : MonoBehaviour
         _sr = GetComponent<SpriteRenderer>();
         _originalSize = _sr.size;
     }
-    public abstract void Scale(ScalingType scalingType);
-}
-
-public enum ScalingType
-{
-    ScaleUp,
-    ScaleDown
+    public abstract void Scale(SCALETYPE scalingType);
 }

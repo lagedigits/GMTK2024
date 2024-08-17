@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class ScalableObjectExpand : ScalableObjectBase
 {
-    public override void Scale(ScalingType scalingType)
+    public override void Scale(SCALETYPE scalingType)
     {
         switch (scalingType)
         {
-            case ScalingType.ScaleUp:
+            case SCALETYPE.ScaleUp:
                 StartCoroutine(nameof(ScaleUpWithBounce));
                 break;
 
-            case ScalingType.ScaleDown:
+            case SCALETYPE.ScaleDown:
                 StartCoroutine(nameof(ScaleDownWithBounce));
                 break;
         }
