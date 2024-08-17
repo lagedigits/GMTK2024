@@ -108,7 +108,10 @@ namespace TarodevController
                 SetColor(_landParticles);
 
                 _anim.SetTrigger(GroundedKey);
-                _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
+                if (UserSettings.enableSoundFX)
+                {
+                    _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
+                }
                 _moveParticles.Play();
 
                 _landParticles.transform.localScale = Vector3.one * Mathf.InverseLerp(0, 40, impact);
