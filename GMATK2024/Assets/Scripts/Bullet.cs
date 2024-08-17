@@ -39,10 +39,17 @@ public class Bullet : MonoBehaviour
                 sObj.Scale(_scaleType);
                 // Instantiate explosion when colliding with resizable object
                 Instantiate(_explosionResizeObj, gameObject.transform.position, Quaternion.identity);
+                
+                // Play sound
+                SoundManager.instance.PlayClip(AUDIOCLIPTYPE.ExplosionResizableObj);
             }
             else
             {
+                // Instantiate explosion when colliding with object
                 Instantiate(_explosion, gameObject.transform.position, Quaternion.identity);
+
+                // Play sound
+                SoundManager.instance.PlayClip(AUDIOCLIPTYPE.Explosion);
             }
 
             Destroy(gameObject);
