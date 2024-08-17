@@ -6,6 +6,10 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private SCALETYPE _scaleType;
     [SerializeField] private float _autoDestroyTime;
+    // The bullet prefab
+    [SerializeField] private GameObject _explosionResizeObj;
+    // The bullet prefab
+    [SerializeField] private GameObject _explosion;
 
     private void Start()
     {
@@ -33,6 +37,12 @@ public class Bullet : MonoBehaviour
             if (sObj != null)
             {
                 sObj.Scale(_scaleType);
+                // Instantiate explosion when colliding with resizable object
+                Instantiate(_explosionResizeObj, gameObject.transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_explosion, gameObject.transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);
