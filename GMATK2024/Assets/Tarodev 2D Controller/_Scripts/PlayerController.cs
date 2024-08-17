@@ -15,6 +15,14 @@ namespace TarodevController
 
         // The gun object
         [SerializeField] private Transform _gunObject;
+        // The bullet prefab
+        [SerializeField] private GameObject _bulletPrefab;
+        // Point from bullet will be shot
+        [SerializeField] private Transform _shootingPoint;
+        // Speed of the bullet
+        [SerializeField] private float _bulletSpeed = 10f;
+        private Vector2 direction;
+
 
         #region Interface
 
@@ -41,6 +49,9 @@ namespace TarodevController
 
             // Rotate gun in direction of the mouse
             RotateChildToMouse();
+
+            // Shoot if mouse buttons clicked
+            Shoot();
         }
 
         private void GatherInput()
@@ -75,13 +86,50 @@ namespace TarodevController
             mousePosition.z = 0;
 
             // Direction to the mouse
-            Vector2 direction = mousePosition - _gunObject.position;
+            direction = (mousePosition - _gunObject.position).normalized;
 
             // Angle between the gun and the mouse
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Rotate the gun to face the mouse
             _gunObject.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+        // Shoot
+        private void Shoot()
+        {
+            // Left click shots scale up bullets
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShootBullet(SCALETYPE.ScaleUp);
+            }
+
+            // Right click shots scale down bullets
+            if (Input.GetMouseButtonDown(1))
+            {
+                ShootBullet(SCALETYPE.ScaleDown);
+            }
+        }
+
+        private void ShootBullet(SCALETYPE bulletType)
+        {
+            if (_bulletPrefab == null || _shootingPoint == null) return;
+
+            // Instantiate the bullet at the shooting point's position and rotation
+            GameObject gun = Instantiate(_bulletPrefab, _shootingPoint.position, _gunObject.rotation);
+
+            Bullet bullet = gun.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                bullet.SetScaleType(bulletType);
+            }
+
+            // Apply velocity to the bullet object
+            Rigidbody2D gunRb = gun.GetComponent<Rigidbody2D>();
+            if (gunRb != null)
+            {
+                gunRb.velocity = direction * _bulletSpeed;
+            }
         }
 
         private void FixedUpdate()
