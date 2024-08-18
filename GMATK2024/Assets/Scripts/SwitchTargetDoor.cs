@@ -8,8 +8,6 @@ public class SwitchTargetDoor : SwitchTarget
 
     public override void Move()
     {
-        Debug.Log("HERE");
-
         if (_direction == DIRECTIONDOOR.Up)
         {
             _animator.SetBool("MoveUp", true);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    [SerializeField] SwitchTarget _target;
+    [SerializeField] private SwitchTargetBase _target;
     [SerializeField] private LayerMask _ignoreLayers;
     [SerializeField] private BoxCollider2D _colliderTrigger;
     [SerializeField] private Animator _animator;
@@ -24,7 +24,6 @@ public class Switch : MonoBehaviour
             {
                 _animator.SetBool("On", true);
                 _hasCollided = true;
-                Debug.Log(_target.GetType().Name);
                 _target.Move();
             }
         }

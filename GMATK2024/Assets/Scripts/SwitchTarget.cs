@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchTarget : MonoBehaviour
+public class SwitchTarget : SwitchTargetBase
 {
-    [SerializeField] protected Animator _animator;
-
-    public virtual void Move(){}
+    public override void Move(){}
 }

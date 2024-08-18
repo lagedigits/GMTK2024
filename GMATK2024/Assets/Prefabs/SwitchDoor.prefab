@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 5945609574576786835}
   - component: {fileID: 5434682218061914166}
   m_Layer: 0
-  m_Name: Door
+  m_Name: SwitchDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6324936328293737382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4658f1d55ee50949a17ebbcfa6e882b, type: 3}
+  m_Script: {fileID: 11500000, guid: bd76200ca27197f4d9c8f0cbbc3be18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8230520152684271011}
+  _direction: 0
