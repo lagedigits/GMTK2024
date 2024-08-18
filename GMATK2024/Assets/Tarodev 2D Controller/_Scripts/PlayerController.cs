@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace TarodevController
 {
@@ -35,6 +36,7 @@ namespace TarodevController
         #endregion
 
         private float _time;
+        private bool _inpuEnabled = true;
 
         private void Awake()
         {
@@ -44,6 +46,16 @@ namespace TarodevController
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
 
             Cursor.SetCursor(_cursorSprite, Vector2.zero, CursorMode.Auto);
+        }
+
+        private void OnEnable()
+        {
+            StaticEventHandler.OnGamePaused += StaticEventHandler_OnGamePaused;
+        }
+
+        private void OnDisable()
+        {
+            StaticEventHandler.OnGamePaused -= StaticEventHandler_OnGamePaused;
         }
 
         private void Update()
@@ -56,6 +68,11 @@ namespace TarodevController
 
             // Shoot if mouse buttons clicked
             Shoot();
+        }
+
+        private void StaticEventHandler_OnGamePaused(bool isGamePaused)
+        {
+            _inpuEnabled = !isGamePaused;
         }
 
         private void GatherInput()
@@ -102,6 +119,11 @@ namespace TarodevController
         // Shoot
         private void Shoot()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+
             // Left click shots scale up bullets
             if (Input.GetMouseButtonDown(0))
             {
@@ -138,6 +160,11 @@ namespace TarodevController
 
         private void FixedUpdate()
         {
+            if (!_inpuEnabled)
+            {
+                return;
+            }
+
             CheckCollisions();
 
             HandleJump();

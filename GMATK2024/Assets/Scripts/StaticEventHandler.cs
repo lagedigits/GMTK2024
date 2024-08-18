@@ -8,4 +8,11 @@ public static class StaticEventHandler
     {
         OnPlayerDied?.Invoke();
     }
+
+    public static event Action<bool> OnGamePaused;
+
+    public static void CallGamePausedEvent(bool isGamePaused)
+    {
+        OnGamePaused?.Invoke(isGamePaused);
+    }
 }
