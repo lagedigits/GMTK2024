@@ -10,5 +10,19 @@ public enum AUDIOCLIPTYPE
 {
     Background = 0,
     ExplosionResizableObj,
-    Explosion
+    Explosion,
+    Open
+}
+
+public enum DIRECTIONDOOR
+{
+    Up = 0,
+    Down = 1
+}
+
+[System.Serializable]
+public enum DIRECTIONPLATFORM
+{
+    Left = 0,
+    Right = 1
 }

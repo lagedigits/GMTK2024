@@ -37,6 +37,7 @@ public class SoundManager : MonoBehaviour
                 break;
             case AUDIOCLIPTYPE.ExplosionResizableObj:
             case AUDIOCLIPTYPE.Explosion:
+            case AUDIOCLIPTYPE.Open:
                 if (UserSettings.enableSoundFX)
                 {
                     _audioSources[_sourceIndex].PlayOneShot(_audioClips[(int)audioType]);
