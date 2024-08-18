@@ -45,7 +45,8 @@ namespace TarodevController
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
 
-            Cursor.SetCursor(_cursorSprite, Vector2.zero, CursorMode.Auto);
+            var hotspot = new Vector2(_cursorSprite.width / 2, _cursorSprite.height / 2);
+            Cursor.SetCursor(_cursorSprite, hotspot, CursorMode.Auto);
         }
 
         private void OnEnable()
@@ -277,6 +278,12 @@ namespace TarodevController
         }
 
         #endregion
+
+        public void Die()
+        {
+            StaticEventHandler.CallPlayerDiedEvent();
+            Destroy(gameObject);
+        }
 
         private void ApplyMovement() => _rb.velocity = _frameVelocity;
 

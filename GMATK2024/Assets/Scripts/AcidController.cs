@@ -16,9 +16,7 @@ public class AcidController : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
         {
-            StaticEventHandler.CallPlayerDiedEvent();
-            Destroy(player.gameObject);
-
+            player.Die();
             StopAllCoroutines();
         }
     }

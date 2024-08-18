@@ -1,3 +1,4 @@
+using TarodevController;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -10,6 +11,7 @@ public abstract class ScalableObjectBase : MonoBehaviour
     [SerializeField] protected float _minScaleSize = 1f;
     [SerializeField] protected float _bounceAmount = 0.35f; // How much it overshoots
     [SerializeField] protected float _bounceDuration = 0.25f; // How long the bounce lasts
+    [SerializeField] protected float _killVelocityThreshold = 3f;
 
     [Space]
     [SerializeField] protected bool _isWeighted;
@@ -33,4 +35,25 @@ public abstract class ScalableObjectBase : MonoBehaviour
     }
 
     public abstract void Scale(SCALETYPE scalingType);
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (_isWeighted && collision.collider.TryGetComponent<PlayerController>(out var player))
+        {
+            ContactPoint2D contactPoint = collision.GetContact(0);
+
+            Vector2 objectPosition = transform.position;
+            Vector2 playerPosition = collision.collider.transform.position;
+
+            if (objectPosition.y > playerPosition.y && _rb.velocity.y < -_killVelocityThreshold)
+            {
+                Vector2 impactDirection = (contactPoint.point - playerPosition).normalized;
+                if (impactDirection.y > 0.5f) // This checks if the angle is mostly downward
+                {
+                    player.Die();
+                }
+            }
+        }
+    }
+
 }

@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +11,7 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private Button _pauseBtn;
 
     private TextMeshProUGUI _panelTitle;
+    private bool _isPlayerDead = false;
 
     private void Awake()
     {
@@ -24,7 +27,7 @@ public class CanvasController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_isPlayerDead)
         {
             TogglePauseMenu();
         }
@@ -44,8 +47,19 @@ public class CanvasController : MonoBehaviour
 
     private void StaticEventHandler_OnPlayerDied()
     {
+        StartCoroutine(ShowGameOverPanelWithDelay(0.5f));
+    }
+
+    private IEnumerator ShowGameOverPanelWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         _panelTitle.text = "Game Over";
         _panel.SetActive(true);
+
+        _panel.transform.localScale = Vector3.zero;
+
+        _panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
     }
 
     public void Restart()
@@ -71,6 +85,9 @@ public class CanvasController : MonoBehaviour
         {
             _panelTitle.text = "Game Paused";
             _panel.SetActive(true);
+
+            _panel.transform.localScale = Vector3.zero;
+            _panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
         }
 
         StaticEventHandler.CallGamePausedEvent(_panel.activeSelf);
