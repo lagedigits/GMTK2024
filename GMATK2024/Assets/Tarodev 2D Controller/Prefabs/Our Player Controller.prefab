@@ -9903,7 +9903,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8696181151574260545}
@@ -9949,7 +9949,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9ec0ca269ec0b4f4fa12877c83d9dd88, type: 3}
+  m_Sprite: {fileID: 1969220154, guid: d98c79d7e952dad4aa29457474e77db7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9970,7 +9970,7 @@ Animator:
   m_GameObject: {fileID: 2773308894944310173}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6e5b5f4662f713845b0c28185c4ea62c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0382b40a1f72a544f91946384a0c5f61, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -29647,8 +29647,8 @@ Transform:
   m_GameObject: {fileID: 5884986640904030648}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.753, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 0.14, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4638136717575173422}
@@ -29694,7 +29694,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8620bcf7fa769e94fa548c2fc0325ef4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 64f08c643c3859842a4ddfe578b91d76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -29757,8 +29757,8 @@ MonoBehaviour:
   _gunObject: {fileID: 4638136717575173422}
   _bulletPrefab: {fileID: 7064151374751767957, guid: 769e8ed426b8c8d4ba5f3aef60080708, type: 3}
   _shootingPoint: {fileID: 5779610692106385568}
-  _bulletSpeed: 10
-  _cursorSprite: {fileID: 0}
+  _bulletSpeed: 25
+  _cursorSprite: {fileID: 2800000, guid: 9d4d61042fb3ac2469a6f945ab3d3ac4, type: 3}
 --- !u!50 &9003646698118693367
 Rigidbody2D:
   serializedVersion: 4
@@ -29772,7 +29772,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 0.4
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a081f785d315a2b43966f129ce852878, type: 2}
@@ -34734,7 +34734,7 @@ Transform:
   m_GameObject: {fileID: 7948351115888448285}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

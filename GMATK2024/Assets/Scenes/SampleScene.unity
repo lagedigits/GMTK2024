@@ -89811,7 +89811,7 @@ Transform:
   m_GameObject: {fileID: 237986362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.52, y: 31.41, z: -10}
+  m_LocalPosition: {x: -3.66, y: -1.21, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -90381,7 +90381,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.52, y: 31.41, z: -10}
+  m_LocalPosition: {x: -3.66, y: -1.21, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90710,57 +90710,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 49039225009344560, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203120427947536649, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: _bulletSpeed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203120427947536649, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: _cursorSprite
-      value: 
-      objectReference: {fileID: 2800000, guid: 9d4d61042fb3ac2469a6f945ab3d3ac4, type: 3}
-    - target: {fileID: 1241224263682734413, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706289056293142879, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2773308894944310173, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3036270578576224733, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3063255371651964999, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212924840580591369, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785675050132679228, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477433677567277793, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6251391535769792048, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.52
+      value: -3.66
       objectReference: {fileID: 0}
     - target: {fileID: 6251391535769792048, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.41
+      value: -1.21
       objectReference: {fileID: 0}
     - target: {fileID: 6251391535769792048, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90797,26 +90753,6 @@ PrefabInstance:
     - target: {fileID: 7245935088079993755, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
       propertyPath: m_Name
       value: Our Player Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 7245935088079993755, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7894952333995105301, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8370637592199327687, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535969269488399098, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9003646698118693367, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
