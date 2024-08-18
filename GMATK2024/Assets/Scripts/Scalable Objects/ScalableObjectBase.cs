@@ -11,13 +11,26 @@ public abstract class ScalableObjectBase : MonoBehaviour
     [SerializeField] protected float _bounceAmount = 0.35f; // How much it overshoots
     [SerializeField] protected float _bounceDuration = 0.25f; // How long the bounce lasts
 
+    [Space]
+    [SerializeField] protected bool _isWeighted;
+
     protected SpriteRenderer _sr;
     protected Vector2 _originalSize;
+    protected Rigidbody2D _rb;
 
     protected virtual void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();
         _originalSize = _sr.size;
     }
+    private void Start()
+    {
+        if (_isWeighted)
+        {
+            _rb = gameObject.AddComponent<Rigidbody2D>();
+            _rb.isKinematic = true;
+        }
+    }
+
     public abstract void Scale(SCALETYPE scalingType);
 }
