@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -10,6 +9,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject _explosionResizeObj;
     // The bullet prefab
     [SerializeField] private GameObject _explosion;
+
+    [SerializeField] private LayerMask _ignoreLayers;
 
     private void Start()
     {
@@ -30,6 +31,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (((1 << other.gameObject.layer) & _ignoreLayers) != 0)
+        {
+            // Ignore the collision
+            return;
+        }
+
         if (!other.CompareTag("Player"))
         {
             ScalableObjectBase sObj = other.GetComponent<ScalableObjectBase>();
@@ -39,7 +46,7 @@ public class Bullet : MonoBehaviour
                 sObj.Scale(_scaleType);
                 // Instantiate explosion when colliding with resizable object
                 Instantiate(_explosionResizeObj, gameObject.transform.position, Quaternion.identity);
-                
+
                 // Play sound
                 SoundManager.instance.PlayClip(AUDIOCLIPTYPE.ExplosionResizableObj);
             }

@@ -23,6 +23,8 @@ namespace TarodevController
         [SerializeField] private float _bulletSpeed = 10f;
         private Vector2 direction;
 
+        [Space(8)]
+        [SerializeField] private Texture2D _cursorSprite;
 
         #region Interface
 
@@ -40,6 +42,8 @@ namespace TarodevController
             _col = GetComponent<CapsuleCollider2D>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
+
+            Cursor.SetCursor(_cursorSprite, Vector2.zero, CursorMode.Auto);
         }
 
         private void Update()

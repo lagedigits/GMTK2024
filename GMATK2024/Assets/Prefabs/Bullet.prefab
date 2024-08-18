@@ -135,6 +135,9 @@ MonoBehaviour:
   _autoDestroyTime: 3
   _explosionResizeObj: {fileID: 4794043405585894037, guid: 37138c0c33167b04fa1fb90b7f5a794f, type: 3}
   _explosion: {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
+  _ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!50 &356236696280832491
 Rigidbody2D:
   serializedVersion: 4

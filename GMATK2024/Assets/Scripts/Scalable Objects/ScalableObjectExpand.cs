@@ -31,6 +31,13 @@ public class ScalableObjectExpand : ScalableObjectBase
             yield return null;
         }
 
+        if (_isWeighted)
+        {
+            _rb.isKinematic = false;
+            _rb.gravityScale = 7f;
+            _rb.mass = 60f;
+        }
+
         elapsedTime = 0f;
         while (elapsedTime < _bounceDuration)
         {
