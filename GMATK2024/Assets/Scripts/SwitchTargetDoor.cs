@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwitchTargetDoor : SwitchTarget
 {
+    [SerializeField] protected Animator _animator;
     [SerializeField] private DIRECTIONDOOR _direction;
 
     public override void Move()
