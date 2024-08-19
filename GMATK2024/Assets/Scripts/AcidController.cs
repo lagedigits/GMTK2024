@@ -1,5 +1,7 @@
 using System.Collections;
+using TarodevController;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AcidController : MonoBehaviour
 {
@@ -8,18 +10,23 @@ public class AcidController : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Level4")
+        {
+            return;
+        }
+
         Invoke(nameof(StartRisingRoutine), _timeBeforeRising);
     }
-    /*
-        private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
         {
-            if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
-            {
-                //player.Die();
-                //StopAllCoroutines();
-            }
+            player.Die();
+            StopAllCoroutines();
         }
-    */
+    }
+
     private void StartRisingRoutine()
     {
         StartCoroutine(RisingRoutine());
