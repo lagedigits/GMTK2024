@@ -315,6 +315,20 @@ namespace TarodevController
             if (_stats == null) Debug.LogWarning("Please assign a ScriptableStats asset to the Player Controller's Stats slot", this);
         }
 #endif
+        public float GetMaxVelocity()
+        {
+            return _stats.MaxSpeed;
+        }
+
+        public float GetRestrictedVelocity()
+        {
+            return _stats.RestrictedSpeed;
+        }
+
+        public void SetMaxVelosity(float value)
+        {
+            _stats.MaxSpeed = value;
+        }
     }
 
     public struct FrameInput

@@ -20,6 +20,10 @@ namespace TarodevController
         [Header("MOVEMENT")] [Tooltip("The top horizontal movement speed")]
         public float MaxSpeed = 14;
 
+        [Header("MOVEMENT")]
+        [Tooltip("The toprestricted horizontal movement speed")]
+        public float RestrictedSpeed = 5;
+
         [Tooltip("The player's capacity to gain horizontal speed")]
         public float Acceleration = 120;
 
