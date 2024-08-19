@@ -22,6 +22,8 @@ namespace TarodevController
         [SerializeField] private Transform _shootingPoint;
         // Speed of the bullet
         [SerializeField] private float _bulletSpeed = 10f;
+        // Gun animation controller
+        [SerializeField] private Animator _gunAnimController;
         private Vector2 direction;
 
         [Space(8)]
@@ -125,16 +127,19 @@ namespace TarodevController
                 return;
             }
 
-            // Left click shots scale up bullets
-            if (Input.GetMouseButtonDown(0))
+            if (Time.time >= _lastShootTime + _stats.ShootCoolDown)
             {
-                ShootBullet(SCALETYPE.ScaleUp);
-            }
+                // Left click shots scale up bullets
+                if (Input.GetMouseButtonDown(0))
+                {
+                    ShootBullet(SCALETYPE.ScaleUp);
+                }
 
-            // Right click shots scale down bullets
-            if (Input.GetMouseButtonDown(1))
-            {
-                ShootBullet(SCALETYPE.ScaleDown);
+                // Right click shots scale down bullets
+                if (Input.GetMouseButtonDown(1))
+                {
+                    ShootBullet(SCALETYPE.ScaleDown);
+                }
             }
         }
 
@@ -157,6 +162,8 @@ namespace TarodevController
             {
                 gunRb.velocity = direction * _bulletSpeed;
                 SoundManager.instance.PlayClip(AUDIOCLIPTYPE.Shoot);
+                _gunAnimController.SetTrigger("Shoot");
+                _lastShootTime = _time;
             }
         }
 
@@ -218,6 +225,7 @@ namespace TarodevController
         private bool _endedJumpEarly;
         private bool _coyoteUsable;
         private float _timeJumpWasPressed;
+        private float _lastShootTime;
 
         private bool HasBufferedJump => _bufferedJumpUsable && _time < _timeJumpWasPressed + _stats.JumpBuffer;
         private bool CanUseCoyote => _coyoteUsable && !_grounded && _time < _frameLeftGrounded + _stats.CoyoteTime;
@@ -242,7 +250,6 @@ namespace TarodevController
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
 
-            //SoundManager.instance.StopClip(AUDIOCLIPTYPE.Movement);
             SoundManager.instance.PlayClip(AUDIOCLIPTYPE.Jump);
         }
 

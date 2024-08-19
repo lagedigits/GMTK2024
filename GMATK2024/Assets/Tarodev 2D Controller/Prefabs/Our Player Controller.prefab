@@ -29631,6 +29631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5779610692106385568}
   - component: {fileID: 1101928485203563142}
+  - component: {fileID: 2479096684806223625}
   m_Layer: 0
   m_Name: ShootingPoint
   m_TagString: Untagged
@@ -29705,6 +29706,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2479096684806223625
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884986640904030648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 535bc2e972bdfb847b9b306be1a5cd03, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7245935088079993755
 GameObject:
   m_ObjectHideFlags: 0
@@ -29758,6 +29780,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 7064151374751767957, guid: 769e8ed426b8c8d4ba5f3aef60080708, type: 3}
   _shootingPoint: {fileID: 5779610692106385568}
   _bulletSpeed: 25
+  _gunAnimController: {fileID: 2479096684806223625}
   _cursorSprite: {fileID: 2800000, guid: 9d4d61042fb3ac2469a6f945ab3d3ac4, type: 3}
 --- !u!50 &9003646698118693367
 Rigidbody2D:
