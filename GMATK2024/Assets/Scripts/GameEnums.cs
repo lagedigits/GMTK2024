@@ -11,7 +11,8 @@ public enum AUDIOCLIPTYPE
     Background = 0,
     ExplosionResizableObj,
     Explosion,
-    Open
+    Open,
+    Shoot
 }
 
 public enum DIRECTIONDOOR

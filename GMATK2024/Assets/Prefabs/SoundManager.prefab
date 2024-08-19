@@ -70,6 +70,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9512b4778b8e9754b9a5a06aad889f46, type: 3}
   - {fileID: 8300000, guid: 310ca07ff46460546a1990e066343b94, type: 3}
   - {fileID: 8300000, guid: 621828f61b6651644a29df0a350e3e08, type: 3}
+  - {fileID: 8300000, guid: b500a7780e5ad8b4db86b2b72c79ca9b, type: 3}
   _backgroundMusic: {fileID: 228434361672142798}
 --- !u!82 &5519859488362450812
 AudioSource:

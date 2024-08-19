@@ -156,6 +156,7 @@ namespace TarodevController
             if (gunRb != null)
             {
                 gunRb.velocity = direction * _bulletSpeed;
+                SoundManager.instance.PlayClip(AUDIOCLIPTYPE.Shoot);
             }
         }
 
