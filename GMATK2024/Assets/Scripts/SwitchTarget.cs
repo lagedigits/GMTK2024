@@ -5,4 +5,5 @@ using UnityEngine;
 public class SwitchTarget : SwitchTargetBase
 {
     public override void Move(){}
+    public override void MoveBack() { }
 }

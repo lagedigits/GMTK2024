@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwitchTargetPlatform : SwitchTarget
 {
+    [SerializeField] protected Animator _animator;
     [SerializeField] private DIRECTIONPLATFORM _direction;
 
     public override void Move()

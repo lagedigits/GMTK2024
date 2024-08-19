@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class SwitchTargetBase : MonoBehaviour
 {
-    [SerializeField] protected Animator _animator;
-
     public abstract void Move();
+    public abstract void MoveBack();
 }
