@@ -1,5 +1,4 @@
 using System.Collections;
-using TarodevController;
 using UnityEngine;
 
 public class AcidController : MonoBehaviour
@@ -11,16 +10,16 @@ public class AcidController : MonoBehaviour
     {
         Invoke(nameof(StartRisingRoutine), _timeBeforeRising);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
+    /*
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            player.Die();
-            StopAllCoroutines();
+            if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
+            {
+                //player.Die();
+                //StopAllCoroutines();
+            }
         }
-    }
-
+    */
     private void StartRisingRoutine()
     {
         StartCoroutine(RisingRoutine());

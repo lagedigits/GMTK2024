@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6042900105049954167}
   - component: {fileID: 9026315245622022267}
   - component: {fileID: 8047917632608041189}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform_ScaleHorizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,4 +148,5 @@ MonoBehaviour:
   _minScaleSize: 1
   _bounceAmount: 0.35
   _bounceDuration: 0.1
+  _killVelocityThreshold: 3
   _isWeighted: 0
