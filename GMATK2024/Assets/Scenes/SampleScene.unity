@@ -94238,7 +94238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6042900105049954167, guid: 589c7e1c63b8a4847943084d42efc57e, type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8047917632608041189, guid: 589c7e1c63b8a4847943084d42efc57e, type: 3}
       propertyPath: _isWeighted
@@ -94765,7 +94765,7 @@ Transform:
   m_GameObject: {fileID: 237986362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17000008, y: 87.81, z: -10}
+  m_LocalPosition: {x: -2.33, y: -1.6900024, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -95759,7 +95759,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17000008, y: 87.81, z: -10}
+  m_LocalPosition: {x: -2.33, y: -1.6900024, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96258,11 +96258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6251391535769792048, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.17000008
+      value: -2.33
       objectReference: {fileID: 0}
     - target: {fileID: 6251391535769792048, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 86.81
+      value: -2.6900024
       objectReference: {fileID: 0}
     - target: {fileID: 6251391535769792048, guid: b4489138bfcd8bb4ebe274a07f9c10c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -101693,7 +101693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6042900105049954167, guid: 589c7e1c63b8a4847943084d42efc57e, type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8047917632608041189, guid: 589c7e1c63b8a4847943084d42efc57e, type: 3}
       propertyPath: _isWeighted
@@ -103015,6 +103015,7 @@ GameObject:
   - component: {fileID: 1919122611}
   - component: {fileID: 1919122610}
   - component: {fileID: 1919122609}
+  - component: {fileID: 1919122612}
   m_Layer: 0
   m_Name: End Game
   m_TagString: Untagged
@@ -103134,6 +103135,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1919122612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919122608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6831bfa53db2d92448f2393c731de92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1939060850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103278,7 +103291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6042900105049954167, guid: 589c7e1c63b8a4847943084d42efc57e, type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047917632608041189, guid: 589c7e1c63b8a4847943084d42efc57e, type: 3}
       propertyPath: _isWeighted
