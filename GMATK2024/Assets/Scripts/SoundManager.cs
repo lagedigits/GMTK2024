@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip[] _audioClips;
     [SerializeField] private AudioSource _backgroundMusic;
+    [SerializeField] private AudioSource _movement;
 
     private AudioSource[] _audioSources;
 
@@ -21,6 +22,8 @@ public class SoundManager : MonoBehaviour
         _audioSources = GetComponentsInChildren<AudioSource>();
         _sourceIndex = 0;
 
+        _movement.clip = _audioClips[(int)AUDIOCLIPTYPE.Movement];
+
         PlayClip(AUDIOCLIPTYPE.Background);
     }
 
@@ -28,6 +31,12 @@ public class SoundManager : MonoBehaviour
     {
         switch (audioType)
         {
+            case AUDIOCLIPTYPE.Movement:
+                if (_movement.isPlaying == false)
+                {
+                    _movement.Play();
+                }
+                break;
             case AUDIOCLIPTYPE.Background:
                 if (UserSettings.enableMusic)
                 {
@@ -35,15 +44,28 @@ public class SoundManager : MonoBehaviour
                     _backgroundMusic.Play();
                 }
                 break;
-            case AUDIOCLIPTYPE.ExplosionResizableObj:
-            case AUDIOCLIPTYPE.Explosion:
-            case AUDIOCLIPTYPE.Open:
-            case AUDIOCLIPTYPE.Shoot:
+            default:
+            //case AUDIOCLIPTYPE.ExplosionResizableObj:
+            //case AUDIOCLIPTYPE.Explosion:
+            //case AUDIOCLIPTYPE.Open:
+            //case AUDIOCLIPTYPE.Shoot:
                 if (UserSettings.enableSoundFX)
                 {
                     _audioSources[_sourceIndex].PlayOneShot(_audioClips[(int)audioType]);
                     IncSourceIndex();
                 }
+                break;
+        }
+    }
+
+    public void StopClip(AUDIOCLIPTYPE audioType)
+    {
+        switch (audioType)
+        {
+            case AUDIOCLIPTYPE.Movement:
+                _movement.Pause();
+                break;
+            default:
                 break;
         }
     }

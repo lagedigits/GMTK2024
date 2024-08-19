@@ -9,10 +9,12 @@ public enum SCALETYPE
 public enum AUDIOCLIPTYPE
 {
     Background = 0,
+    Movement,
     ExplosionResizableObj,
     Explosion,
     Open,
-    Shoot
+    Shoot,
+    Jump
 }
 
 public enum DIRECTIONDOOR

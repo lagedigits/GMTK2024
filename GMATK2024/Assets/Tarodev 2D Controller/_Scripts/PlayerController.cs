@@ -241,6 +241,9 @@ namespace TarodevController
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
+
+            //SoundManager.instance.StopClip(AUDIOCLIPTYPE.Movement);
+            SoundManager.instance.PlayClip(AUDIOCLIPTYPE.Jump);
         }
 
         #endregion
@@ -253,10 +256,21 @@ namespace TarodevController
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
+
+                SoundManager.instance.StopClip(AUDIOCLIPTYPE.Movement);
             }
             else
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+
+                if(_grounded)
+                {
+                    SoundManager.instance.PlayClip(AUDIOCLIPTYPE.Movement);
+                }
+                else
+                {
+                    SoundManager.instance.StopClip(AUDIOCLIPTYPE.Movement);
+                }
             }
         }
 
