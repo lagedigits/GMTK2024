@@ -15,4 +15,11 @@ public static class StaticEventHandler
     {
         OnGamePaused?.Invoke(isGamePaused);
     }
+
+    public static event Action OnGameOver;
+
+    public static void CallGameOverEvent()
+    {
+        OnGameOver?.Invoke();
+    }
 }
