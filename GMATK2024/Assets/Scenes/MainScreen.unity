@@ -1003,6 +1003,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1170537205751532144, guid: f27258b53df0ea443901da92c4fc76cb, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189362332294022474, guid: f27258b53df0ea443901da92c4fc76cb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3424281917702863927, guid: f27258b53df0ea443901da92c4fc76cb, type: 3}
       propertyPath: _transitionTime
       value: 1.5
@@ -1021,7 +1029,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1893597455}
-  - {fileID: 9169412323665217796}
   - {fileID: 1017056030}
+  - {fileID: 9169412323665217796}
   - {fileID: 1069186651}
   - {fileID: 1920654100}
