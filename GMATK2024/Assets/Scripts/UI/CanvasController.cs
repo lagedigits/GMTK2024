@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class CanvasController : MonoBehaviour
 
     private TextMeshProUGUI _panelTitle;
     private bool _isPlayerDead = false;
+    private bool _isPaused = false;
 
     private void Awake()
     {
@@ -21,7 +23,6 @@ public class CanvasController : MonoBehaviour
     private void Start()
     {
         _panelTitle.text = string.Empty;
-
         _panel.SetActive(false);
     }
 
@@ -31,13 +32,20 @@ public class CanvasController : MonoBehaviour
         {
             TogglePauseMenu();
         }
+
+        // Ensure SPACE cannot toggle pause menu if already paused
+        if (_isPaused && Input.GetKeyDown(KeyCode.Space))
+        {
+            // Consume the SPACE key input to prevent accidental unpausing
+            Input.ResetInputAxes();
+        }
     }
 
     private void OnEnable()
     {
         StaticEventHandler.OnPlayerDied += StaticEventHandler_OnPlayerDied;
         StaticEventHandler.OnGameOver += StaticEventHandler_OnGameOver;
-        _pauseBtn.onClick.AddListener(TogglePauseMenu);
+        _pauseBtn.onClick.AddListener(OnPauseButtonClicked);
     }
 
     private void OnDisable()
@@ -55,6 +63,34 @@ public class CanvasController : MonoBehaviour
     private void StaticEventHandler_OnGameOver()
     {
         ShowGameCompletedPanel();
+    }
+
+    private void TogglePauseMenu()
+    {
+        _isPaused = !_panel.activeSelf;
+
+        if (_isPaused)
+        {
+            _panelTitle.text = "Game Paused";
+            _panel.SetActive(true);
+            _panel.transform.localScale = Vector3.zero;
+            _panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
+        }
+        else
+        {
+            _panel.SetActive(false);
+            _panelTitle.text = string.Empty;
+        }
+
+        StaticEventHandler.CallGamePausedEvent(_panel.activeSelf);
+    }
+
+    private void OnPauseButtonClicked()
+    {
+        TogglePauseMenu();
+
+        // Clear focus to prevent further SPACE key input from toggling the menu
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     private IEnumerator ShowGameOverPanelWithDelay(float delay)
@@ -82,31 +118,11 @@ public class CanvasController : MonoBehaviour
     public void Restart()
     {
         var activeScene = SceneManager.GetActiveScene();
-
         SceneManager.LoadScene(activeScene.name);
     }
 
     public void Exit()
     {
         Application.Quit();
-    }
-
-    private void TogglePauseMenu()
-    {
-        if (_panel.activeSelf)
-        {
-            _panel.SetActive(false);
-            _panelTitle.text = string.Empty;
-        }
-        else
-        {
-            _panelTitle.text = "Game Paused";
-            _panel.SetActive(true);
-
-            _panel.transform.localScale = Vector3.zero;
-            _panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
-        }
-
-        StaticEventHandler.CallGamePausedEvent(_panel.activeSelf);
     }
 }
