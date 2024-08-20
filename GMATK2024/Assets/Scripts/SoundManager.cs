@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -14,7 +12,19 @@ public class SoundManager : MonoBehaviour
 
     private int _sourceIndex;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         instance = this;
@@ -72,8 +82,8 @@ public class SoundManager : MonoBehaviour
                 }
                 break;
             default:
-            //case AUDIOCLIPTYPE.Open:
-            //case AUDIOCLIPTYPE.Shoot:
+                //case AUDIOCLIPTYPE.Open:
+                //case AUDIOCLIPTYPE.Shoot:
                 if (UserSettings.enableSoundFX)
                 {
                     _audioSources[_sourceIndex].volume = 1.0f;

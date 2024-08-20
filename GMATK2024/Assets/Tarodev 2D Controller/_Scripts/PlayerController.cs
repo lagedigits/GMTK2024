@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -57,11 +58,13 @@ namespace TarodevController
         private void OnEnable()
         {
             StaticEventHandler.OnGamePaused += StaticEventHandler_OnGamePaused;
+            StaticEventHandler.OnLoadNextLevel += StaticEventHandler_OnLoadNextLevel;
         }
 
         private void OnDisable()
         {
             StaticEventHandler.OnGamePaused -= StaticEventHandler_OnGamePaused;
+            StaticEventHandler.OnLoadNextLevel -= StaticEventHandler_OnLoadNextLevel;
         }
 
         private void Update()
@@ -79,6 +82,12 @@ namespace TarodevController
         private void StaticEventHandler_OnGamePaused(bool isGamePaused)
         {
             _inpuEnabled = !isGamePaused;
+        }
+
+        private void StaticEventHandler_OnLoadNextLevel()
+        {
+            _inpuEnabled = false;
+            StartCoroutine(GraduallyReduceVelocityCoroutine());
         }
 
         private void GatherInput()
@@ -279,7 +288,7 @@ namespace TarodevController
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
 
-                if(_grounded)
+                if (_grounded)
                 {
                     SoundManager.instance.PlayClip(AUDIOCLIPTYPE.Movement);
                 }
@@ -306,6 +315,28 @@ namespace TarodevController
                 if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
+        }
+
+        private IEnumerator GraduallyReduceVelocityCoroutine()
+        {
+            float elapsedTime = 0f;
+            Vector2 initialVelocity = _rb.velocity;
+
+            while (elapsedTime < 1f)
+            {
+                // Calculate the fraction of time elapsed
+                float t = elapsedTime / 1f;
+
+                // Interpolate velocity from current to zero
+                _rb.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, t);
+
+                elapsedTime += Time.deltaTime;
+                yield return null; // Wait for the next frame
+            }
+
+            // Ensure velocity is exactly zero after the loop
+            _rb.velocity = Vector2.zero;
+            _inpuEnabled = false; // Disable input or movement
         }
 
         #endregion

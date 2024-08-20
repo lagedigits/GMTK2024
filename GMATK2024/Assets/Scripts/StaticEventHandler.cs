@@ -22,4 +22,11 @@ public static class StaticEventHandler
     {
         OnGameOver?.Invoke();
     }
+
+    public static event Action OnLoadNextLevel;
+
+    public static void CallLoadNextLevelEvent()
+    {
+        OnLoadNextLevel?.Invoke();
+    }
 }
