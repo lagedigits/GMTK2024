@@ -44,13 +44,40 @@ public class SoundManager : MonoBehaviour
                     _backgroundMusic.Play();
                 }
                 break;
+            case AUDIOCLIPTYPE.Explosion:
+                if (UserSettings.enableSoundFX)
+                {
+                    _audioSources[_sourceIndex].volume = 0.35f;
+                    _audioSources[_sourceIndex].pitch = 1.0f;
+                    _audioSources[_sourceIndex].PlayOneShot(_audioClips[(int)audioType]);
+                    IncSourceIndex();
+                }
+                break;
+            case AUDIOCLIPTYPE.Jump:
+                if (UserSettings.enableSoundFX)
+                {
+                    _audioSources[_sourceIndex].volume = 0.35f;
+                    _audioSources[_sourceIndex].pitch = Random.Range(0.6f, 1.6f);
+                    _audioSources[_sourceIndex].PlayOneShot(_audioClips[(int)audioType]);
+                    IncSourceIndex();
+                }
+                break;
+            case AUDIOCLIPTYPE.ExplosionResizableObj:
+                if (UserSettings.enableSoundFX)
+                {
+                    _audioSources[_sourceIndex].volume = 0.25f;
+                    _audioSources[_sourceIndex].pitch = 1.0f;
+                    _audioSources[_sourceIndex].PlayOneShot(_audioClips[(int)audioType]);
+                    IncSourceIndex();
+                }
+                break;
             default:
-            //case AUDIOCLIPTYPE.ExplosionResizableObj:
-            //case AUDIOCLIPTYPE.Explosion:
             //case AUDIOCLIPTYPE.Open:
             //case AUDIOCLIPTYPE.Shoot:
                 if (UserSettings.enableSoundFX)
                 {
+                    _audioSources[_sourceIndex].volume = 1.0f;
+                    _audioSources[_sourceIndex].pitch = 1.0f;
                     _audioSources[_sourceIndex].PlayOneShot(_audioClips[(int)audioType]);
                     IncSourceIndex();
                 }
