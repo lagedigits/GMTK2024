@@ -14,6 +14,9 @@ namespace TarodevController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
 
+        [SerializeField] private bool _disableLeftButton;
+        [SerializeField] private bool _disableRightButton;
+
         // The gun object
         [SerializeField] private Transform _gunObject;
         // The bullet prefab
@@ -129,16 +132,22 @@ namespace TarodevController
 
             if (Time.time >= _lastShootTime + _stats.ShootCoolDown)
             {
-                // Left click shots scale up bullets
-                if (Input.GetMouseButtonDown(0))
+                if (_disableLeftButton == false)
                 {
-                    ShootBullet(SCALETYPE.ScaleUp);
+                    // Left click shots scale up bullets
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ShootBullet(SCALETYPE.ScaleUp);
+                    }
                 }
 
-                // Right click shots scale down bullets
-                if (Input.GetMouseButtonDown(1))
+                if (_disableRightButton == false)
                 {
-                    ShootBullet(SCALETYPE.ScaleDown);
+                    // Right click shots scale down bullets
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        ShootBullet(SCALETYPE.ScaleDown);
+                    }
                 }
             }
         }
